@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخیص IP</title>
+    <link rel="stylesheet" href="/iP/iP.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="icon" href="/index/ico.png" type="image/x-icon">
+</head>
+<body class="dark-mode">
+        <!-- Loading Screen -->
+        <div class="loading-screen">
+            <div class="loading-box">
+                <div class="inner-box"></div>
+            </div>
+        </div>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo animate__animated animate__fadeIn">
+                <i class="fas fa-gamepad"></i> <!-- آیکون دسته بازی -->
+                <span class="english-text">Pubg connection</span>
+            </div>            
+            </div>
+            <div class="nav-links animate__animated animate__fadeIn">
+                <a href="/index/index.html" class="nav-link english-text">Home</a>
+                <a href="/wire/index.html" class="nav-link english-text">Wireguard Config</a>
+                <a href="/iP/iP.html" class="nav-link english-text" id="ip-address">IP checker</a>
+            </div>
+            <div class="theme-toggle animate__animated animate__fadeIn">
+                <i class="fas fa-sun"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-switch" checked>
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-moon"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>پیدا کردن کشور از IP</h1>
+        <p>آدرس IP خود را وارد کنید تا کشور آن نمایش داده شود.</p>
+        <input type="text" id="ipInput" placeholder="آدرس IP خود را وارد کنید">
+        <button onclick="lookupIP()" class="searchbtn">جستجو</button>
+        <div class="result" id="result"></div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <ul class="footer-links">
+                <li><a href="/index/index.html">Home</a></li>
+                <li><a href="/iP/iP.html">IP checker</a></li>
+                <li><a href="/wire/index.html">Wireguard Config</a></li>
+            </ul>
+            <div class="footer-social">
+                <a href="https://zarinp.al/hellboyshop" target="_blank">
+                    <button class="donate-btn">دونیت و حمایت مالی</button>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+        </div>
+    </footer>
+    
+
+    <script src="/iP/iP.js"></script>
+</body>
+</html>
