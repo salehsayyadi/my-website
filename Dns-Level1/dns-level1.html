@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Generator</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="theme-switch">
+            <label class="switch">
+                <input type="checkbox" id="themeSwitch">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="warning">
+            ⚠️ !توجه: شما فقط یکبار میتوانید دی ان اس تولید کنید پس در انتخاب خود دقت داشته باشید
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <h2>
+                    <img src="/Dns-Level1/finland.png" alt="finland flag">
+                    Finland DNS Generator
+                </h2>
+                <div class="button-group">
+                    <button class="generate-btn" onclick="generateDNS('finland')">Generate DNS</button>
+                    <button class="copy-btn" id="finland-copy-all">Copy All</button>
+                </div>
+                <div class="result" id="finland-result"></div>
+            </div>
+
+            <div class="card">
+                <h2>
+                    <img src="/Dns-Level1/spain.png" alt="spain flag">
+                    Spain DNS Generator
+                </h2>
+                <div class="button-group">
+                    <button class="generate-btn" onclick="generateDNS('spain')">Generate DNS</button>
+                    <button class="copy-btn" id="spain-copy-all">Copy All</button>
+                </div>
+                <div class="result" id="spain-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+        const themeSwitch = document.getElementById('themeSwitch');
+        
+        // چک کردن وضعیت قبلی تم از localStorage
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'light') {
+            document.body.setAttribute('data-theme', 'light');
+            themeSwitch.checked = true;
+        }
+
+        themeSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                document.body.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.body.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+    });
+
+        let hasGenerated = false;
+    
+        const dnsRanges = {
+            finland: {
+                ipv4: ["91.152.0.0/13"],
+                ipv6_1: ["2001:9f0::/29"],
+                ipv6_2: ["2001:9f0::/29"]
+            },
+            spain: {
+                ipv4: ["85.48.0.0/12"],
+                ipv6_1: ["2a02:2e00::/27"],
+                ipv6_2: ["2a02:2e00::/27"]
+            }
+        };
+
+        document.getElementById('themeSwitch').addEventListener('change', function() {
+            document.body.classList.toggle('light-theme');
+        });
+
+        // Copy All buttons event listeners
+        document.getElementById('finland-copy-all').addEventListener('click', function() {
+            copyAllDNS('finland');
+        });
+        document.getElementById('spain-copy-all').addEventListener('click', function() {
+            copyAllDNS('spain');
+        });
+    
+        function generateRandomIP(ranges, type) {
+            const randomRange = ranges[Math.floor(Math.random() * ranges.length)];
+    
+            if (type === 'ipv4') {
+                const [baseIP, mask] = randomRange.split('/');
+                const ipParts = baseIP.split('.');
+                const maskBits = parseInt(mask);
+    
+                const hostBits = 32 - maskBits;
+                const maxHosts = Math.pow(2, hostBits) - 1;
+    
+                const randomHost = Math.floor(Math.random() * maxHosts) + 1;
+    
+                let ipNum = ipParts.reduce((acc, part) => (acc << 8) + parseInt(part), 0);
+    
+                const networkMask = (0xffffffff << hostBits);
+                const networkPart = ipNum & networkMask;
+                const finalIP = networkPart | randomHost;
+    
+                const finalIPParts = [
+                    (finalIP >> 24) & 255,
+                    (finalIP >> 16) & 255,
+                    (finalIP >> 8) & 255,
+                    finalIP & 255
+                ];
+    
+                return `${finalIPParts.join('.')}`;
+            } else {
+                const [baseIPv6, mask] = randomRange.split('/');
+                const maskBits = parseInt(mask);
+    
+                const ipv6Parts = baseIPv6.split(':');
+    
+                const fullIPv6Parts = [];
+                let doubleColonFound = false;
+    
+                for (let part of ipv6Parts) {
+                    if (part === '') {
+                        if (doubleColonFound) continue;
+                        const zerosNeeded = 8 - ipv6Parts.filter(p => p !== '').length;
+                        for (let i = 0; i < zerosNeeded; i++) {
+                            fullIPv6Parts.push('0000');
+                        }
+                        doubleColonFound = true;
+                    } else {
+                        fullIPv6Parts.push(part.padStart(4, '0'));
+                    }
+                }
+    
+                const staticParts = Math.ceil(maskBits / 16);
+                const randomParts = fullIPv6Parts.map((part, index) => {
+                    if (index < staticParts) {
+                        return part;
+                    }
+                    return Math.floor(Math.random() * 65536).toString(16).padStart(4, '0');
+                });
+    
+                return `${randomParts.join(':')}`;
+            }
+        }
+    
+        function generateDNS(country) {
+            if (hasGenerated) {
+                alert('شما قبلاً یک DNS تولید کرده‌اید!');
+                return;
+            }
+    
+            const ranges = dnsRanges[country];
+            const ipv4DNS = generateRandomIP(ranges.ipv4, 'ipv4');
+            const ipv6DNS1 = generateRandomIP(ranges.ipv6_1, 'ipv6');
+            const ipv6DNS2 = generateRandomIP(ranges.ipv6_2, 'ipv6');
+    
+            const result = `
+                <div><span>IPv4: ${ipv4DNS}</span></div>
+                <div><span>IPv6 (1): ${ipv6DNS1}</span></div>
+                <div><span>IPv6 (2): ${ipv6DNS2}</span></div>
+            `;
+    
+            document.getElementById(`${country}-result`).innerHTML = result;
+            hasGenerated = true;
+        }
+    
+        function copyAllDNS(country) {
+            const resultDiv = document.getElementById(`${country}-result`);
+            if (!resultDiv.textContent) return;
+
+            const allText = Array.from(resultDiv.querySelectorAll('span'))
+                .map(span => span.textContent)
+                .join('\n');
+
+            navigator.clipboard.writeText(allText).then(() => {
+                alert('تمام DNS ها با موفقیت کپی شدند!');
+            }).catch(() => {
+                alert('خطا در کپی کردن!');
+            });
+        }
+
+        // Prevent opening DevTools (optional)
+(function() {
+    document.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+    });
+
+    document.onkeydown = function(event) {
+        if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && event.keyCode === 73)) {
+            event.preventDefault();
+        }
+    };
+})();
+    </script>
+    
+</body>
+</html>

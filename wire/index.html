@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WireGuard Config Generator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/index/ico.png" type="image/x-icon">
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="bi" id="themeIcon"></i>
+    </button>
+
+    <div class="container">
+        <div class="card">
+            <h1>WireGuard Config Generator</h1>
+            <input type="password" id="password" class="password-input" placeholder="رمز عبور را وارد کنید">
+            <div class="form-group">
+                <label>Port</label>
+                <input type="number" id="port" value="51820" class="english">
+                <div class="suggested-ports">
+                    Suggested Ports: 51820, 443, 80, 53, 8080, 2087, 2053, 2096
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="generateConfig()">Generate Config</button>
+                <button onclick="downloadConfig()">Download Config</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Generated Config</h2>
+            <div id="output" class="english"></div>
+        </div>
+        <label for="fileName">file name</label>
+        <input type="text" id="fileName" placeholder="نام دلخواه فایل">
+    </div>
+   <!-- Footer Section -->
+   <footer class="footer">
+    <div class="footer-content">
+        <ul class="footer-links">
+            <li><a href="/index/index.html">Home</a></li>
+            <li><a href="/iP/iP.html">IP checker</a></li>
+            <li><a href="/wire/index.html">Wireguard Config</a></li>
+        </ul>
+        <div class="footer-social">
+            <a href="#" target="_blank">
+                <button class="donate-btn">دونیت و حمایت مالی</button>
+            </a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+    </div>
+</footer>
+    <script src="script.js"></script>
+</body>
+</html>
