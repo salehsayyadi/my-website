@@ -210,14 +210,14 @@ style.textContent = `
 document.head.appendChild(style);
 
 // Handle DNS Generator Button
-// document.getElementById("generate-dns").addEventListener("click", () => {
-//     const country = countrySelect.value;
-//     if (country && dnsData[country]) {
-//         const randomIPv4Ranges = dnsData[country].ipv4.sort(() => Math.random() - 0.5).slice(0, 2);
-//         const randomIPv6Ranges = dnsData[country].ipv6.sort(() => Math.random() - 0.5).slice(0, 2);
+document.getElementById("generate-dns").addEventListener("click", () => {
+    const country = countrySelect.value;
+    if (country && dnsData[country]) {
+        const randomIPv4Ranges = dnsData[country].ipv4.sort(() => Math.random() - 0.5).slice(0, 2);
+        const randomIPv6Ranges = dnsData[country].ipv6.sort(() => Math.random() - 0.5).slice(0, 2);
 
-//         ipv4Fields[0].value = generateRandomIPFromCIDR(randomIPv4Ranges[0]);
-//         ipv4Fields[1].value = "Electro - Radar";
+        ipv4Fields[0].value = generateRandomIPFromCIDR(randomIPv4Ranges[0]);
+        ipv4Fields[1].value = "Electro - Radar";
         // مقدار اولیه آدرس IPv6
 ipv6Fields[0].value = generateRandomIPv6FromCIDR(randomIPv6Ranges[0]);
 
@@ -234,6 +234,8 @@ function getRandomHexChar() {
     return hexChars[Math.floor(Math.random() * hexChars.length)];
 }
 
+    }
+});
 
 // Hide loading screen after page loads
 document.addEventListener('DOMContentLoaded', () => {
