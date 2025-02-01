@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود به سیستم</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+        :root {
+            --primary: #FF8B00;
+            --background: #212121;
+            --text: #FFFFFF;
+            --warning-bg: rgba(255, 139, 0, 0.15);
+            --warning-border: #FF8B00;
+            --warning-text: #FF8B00;
+            --input-bg: #333;
+            --input-border: #FF8B00;
+            --button-hover: #e67e00;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            font-family: 'Vazirmatn', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .warning-message {
+            background-color: var(--warning-bg);
+            color: var(--warning-text);
+            padding: 15px 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--warning-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px rgba(255, 139, 0, 0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .warning-icon {
+            font-size: 22px;
+        }
+
+        .login-container {
+            background-color: var(--warning-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(255, 139, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .login-container h2 {
+            color: var(--warning-text);
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--warning-text);
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--input-border);
+            border-radius: 5px;
+            font-size: 14px;
+            background-color: var(--input-bg);
+            color: var(--text);
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 5px var(--primary);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: var(--text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--warning-border);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>ورود به سیستم</h2>
+        <div class="input-group">
+            <label>نام کاربری:</label>
+            <input type="text" id="username" placeholder="نام کاربری">
+        </div>
+        <div class="input-group">
+            <label>رمز عبور:</label>
+            <input type="password" id="password" placeholder="رمز عبور">
+        </div>
+        <button onclick="login()">ورود</button>
+        <p id="error" style="color: red; margin-top: 10px;"></p>
+    </div>
+
+    <script>
+        const validUsername = "admin";
+        const validPassword = "1234";
+
+        function login() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            if (username === validUsername && password === validPassword) {
+                localStorage.setItem("loggedIn", "true");
+                window.location.href = "protected.html";
+            } else {
+                document.getElementById("error").innerText = "نام کاربری یا رمز عبور اشتباه است!";
+            }
+        }
+    </script>
+
+</body>
+</html>
