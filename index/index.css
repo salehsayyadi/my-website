@@ -886,3 +886,52 @@ a.telegram-icon.yt:hover {
         max-height: 300px;
     }
 }
+/* اضافه کردن پشتیبانی کامل از موبایل */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1rem;
+      
+    }
+    
+    header img {
+        height: auto;
+        max-height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+        padding: 0.7rem 1rem;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .card {
+        padding: 1rem;
+        font-size: 14px;
+    }
+    
+    .buy-btn {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 16px;
+    }
+}
