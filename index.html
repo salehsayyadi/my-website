@@ -15,6 +15,23 @@
     <link rel="stylesheet" href="/index/styles23.css">
 </head>
 <!-- <body class="bg-gradient-to-b from-gray-800 to-blue-800"> -->
+</head>
+<body>
+    <!-- محتویات صفحه -->
+    
+    <script>
+        // JavaScript to redirect based on device type
+        window.onload = function() {
+            if (window.innerWidth <= 768) { // This checks for mobile devices
+                // If it's a mobile device, do not redirect, just continue
+                return;
+            } else {
+                // If it's a desktop or larger, redirect to the desktop version
+                window.location.href = "/desktop.html"; // Link to your desktop-specific page
+            }
+        }
+    </script>
+</body>
 
     <header>
         <nav>
