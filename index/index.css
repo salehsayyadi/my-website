@@ -848,3 +848,41 @@ a.telegram-icon.yt:hover {
         width: 35%;
     }
 }
+/* اضافه کردن پشتیبانی کامل از موبایل */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .nav-link {
+        font-size: 16px;
+        padding: 0.7rem 1rem;
+    }
+    
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    
+    .card {
+        padding: 1rem;
+        font-size: 14px;
+    }
+    
+    .buy-btn {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 16px;
+    }
+    
+    header img {
+        height: auto;
+        max-height: 300px;
+    }
+}
