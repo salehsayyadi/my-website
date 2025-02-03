@@ -1,0 +1,62 @@
+
+header img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+
+.box {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.box:hover {
+    transform: translateY(-5px);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+
+
+
+/* آیکون‌ها */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ایجاد تطابق با کلاس‌های Tailwind */
+.text-center {
+    text-align: center;
+}
+
+/* برای طراحی واکنش‌گرا */
+@media (max-width: 768px) {
+    .box {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}
