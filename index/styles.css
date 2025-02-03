@@ -1,4 +1,3 @@
-/* کد اصلی شما بدون تغییرات */
 
 .btn {
     display: inline-block;
@@ -7,13 +6,10 @@
     text-align: center;
     font-weight: bold;
     transition: background 0.3s;
-    font-size: 1rem;
-    text-decoration: none;
-    color: #fff;
 }
 
 .btn-primary {
-    background: #003366;
+    background: #003366; /* آبی تیره */
     color: #fff;
 }
 
@@ -22,10 +18,10 @@
 }
 
 .btn-secondary {
-    background: #0088cc;
+    background: #0088cc; /* آبی روشن */
     color: #fff;
 }
 
 .btn-secondary:hover {
-    background: #0077b3;
+    background: #0077b3; /* آبی تیره‌تر هنگام hover */
 }
