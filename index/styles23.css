@@ -1,0 +1,110 @@
+/* کد اصلی شما بدون تغییرات */
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: background 0.3s;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-primary {
+    background: #003366;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #0055aa;
+}
+
+.btn-secondary {
+    background: #0088cc;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background: #0077b3;
+}
+
+/* آیکون‌ها */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries برای تغییر اندازه‌ها در دستگاه‌های مختلف */
+
+/* موبایل */
+@media screen and (max-width: 640px) {
+    .btn {
+        font-size: 0.8rem; /* کاهش اندازه فونت برای موبایل */
+        padding: 10px 20px; /* کاهش پدینگ برای موبایل */
+    }
+    
+    .btn-primary, .btn-secondary {
+        font-size: 0.9rem; /* کاهش سایز دکمه‌ها */
+    }
+
+    /* تصاویر در موبایل */
+    img {
+        max-width: 90%; /* تصاویر بزرگتر روی موبایل */
+    }
+
+    /* سایر تغییرات دلخواه برای موبایل */
+    .logo {
+        font-size: 1.5rem; /* کاهش اندازه لوگو */
+    }
+
+    .nav-links a {
+        font-size: 0.9rem; /* کاهش اندازه لینک‌ها */
+    }
+
+    /* تغییرات برای کارت‌ها */
+    .card {
+        width: 100%; /* کارت‌ها را در موبایل به اندازه کل صفحه تغییر بده */
+    }
+}
+
+/* تبلت */
+@media screen and (min-width: 641px) and (max-width: 1024px) {
+    .btn {
+        font-size: 1rem; /* سایز مناسب برای تبلت */
+        padding: 10px 22px; /* پدینگ مناسب */
+    }
+
+    .logo {
+        font-size: 2rem; /* اندازه لوگو مناسب */
+    }
+
+    .nav-links a {
+        font-size: 1rem; /* اندازه لینک‌ها در تبلت */
+    }
+
+    .card {
+        width: 45%; /* کارت‌ها را به نصف عرض صفحه تقسیم می‌کند */
+    }
+}
+
+/* دسکتاپ */
+@media screen and (min-width: 1025px) {
+    .btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+    }
+
+    .logo {
+        font-size: 2.5rem; /* اندازه بزرگتر لوگو در دسکتاپ */
+    }
+
+    .nav-links a {
+        font-size: 1.2rem; /* اندازه لینک‌ها در دسکتاپ */
+    }
+
+    .card {
+        width: 22%; /* کارت‌ها را به عرض کوچک‌تر در دسکتاپ تغییر می‌دهد */
+    }
+}
